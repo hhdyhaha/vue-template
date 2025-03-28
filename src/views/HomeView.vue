@@ -9,6 +9,6 @@
 .box {
   width: 200px;
   height: 100px;
-  font-size: 16px;
+  font-size: 20px;
 }
 </style>

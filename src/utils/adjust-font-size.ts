@@ -2,20 +2,24 @@ export function adjustRootValue() {
   const screenWidth = window.innerWidth;
   let fontSize;
 
-  if (screenWidth <= 750) {
-    // 移动端适配，设计稿宽度 750px
-    // fontSize = (screenWidth / 750) * 75;
-    fontSize = 75;
+  // 判断是否为移动设备
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || screenWidth <= 750;
+
+  if (isMobile) {
+    // 移动端使用响应式计算
+    // 设计稿宽度750px时，除以7.5得到100px的基准字体大小
+    fontSize = screenWidth / 7.5;
   } else {
-    // PC 端固定值，因为我们的 postcss-pxtorem 配置的 rootValue 是 75
+    // PC端保持固定值
     fontSize = 75;
   }
 
-  // 设置 html 根元素的字体大小
+  // 设置html根元素的字体大小
   document.documentElement.style.fontSize = `${fontSize}px`;
 
   // 添加调试信息
   // console.log('当前屏幕宽度：', screenWidth);
+  // console.log('设备类型：', isMobile ? '移动端' : 'PC端');
   // console.log('设置的字体大小：', fontSize);
 }
 
