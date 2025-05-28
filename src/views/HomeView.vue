@@ -2,8 +2,7 @@
   <div class="box">Hello Rem</div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .box {
